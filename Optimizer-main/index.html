@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compiler Optimization Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Compiler Optimization Visualizer</h1>
+            <p class="subtitle">Visualize lexical analysis, parsing, and optimization techniques</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="section-header">
+                    <h2>📝 Source Code</h2>
+                    <button id="exampleBtn" class="btn btn-secondary">Load Example</button>
+                </div>
+                <textarea id="codeInput" placeholder="Enter your code here...
+Example:
+int a = 3;
+int b = 2;
+int c = a + b * 4 + 5;"></textarea>
+                <button id="compileBtn" class="btn btn-primary">Compile & Optimize</button>
+            </section>
+
+            <!-- Tabs for different views -->
+            <section class="output-section">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="tokens">
+                        <span class="tab-icon">🔤</span>
+                        <span>Tokens</span>
+                    </button>
+                    <button class="tab-btn" data-tab="ast">
+                        <span class="tab-icon">🌳</span>
+                        <span>AST</span>
+                    </button>
+                    <button class="tab-btn" data-tab="symbol">
+                        <span class="tab-icon">📋</span>
+                        <span>Symbol Table</span>
+                    </button>
+                    <button class="tab-btn" data-tab="tac">
+                        <span class="tab-icon">⚙️</span>
+                        <span>TAC</span>
+                    </button>
+                    <button class="tab-btn" data-tab="optimizations">
+                        <span class="tab-icon">🚀</span>
+                        <span>Optimizations</span>
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Tokens Tab -->
+                    <div id="tokens-tab" class="tab-pane active">
+                        <h3>🔤 Lexical Analysis - Tokens</h3>
+                        <p class="tab-description">Breaking down source code into meaningful tokens</p>
+                        <div id="tokensOutput" class="output-box"></div>
+                    </div>
+
+                    <!-- AST Tab -->
+                    <div id="ast-tab" class="tab-pane">
+                        <h3>🌳 Abstract Syntax Tree</h3>
+                        <p class="tab-description">Hierarchical representation of the program structure</p>
+                        <div id="astOutput" class="output-box"></div>
+                    </div>
+
+                    <!-- Symbol Table Tab -->
+                    <div id="symbol-tab" class="tab-pane">
+                        <h3>📋 Symbol Table</h3>
+                        <p class="tab-description">Tracking all declared variables and their properties</p>
+                        <div id="symbolOutput" class="output-box"></div>
+                    </div>
+
+                    <!-- TAC Tab -->
+                    <div id="tac-tab" class="tab-pane">
+                        <h3>⚙️ Three Address Code (TAC)</h3>
+                        <p class="tab-description">Intermediate representation with at most three operands per instruction</p>
+                        <div id="tacOutput" class="output-box"></div>
+                    </div>
+
+                    <!-- Optimizations Tab -->
+                    <div id="optimizations-tab" class="tab-pane">
+                        <h3>🚀 Optimization Techniques</h3>
+                        <p class="tab-description">Applying various optimization passes to improve code efficiency</p>
+                        <div class="optimization-grid">
+                            <div class="optimization-card">
+                                <div class="card-header">
+                                    <span class="card-number">1</span>
+                                    <h4>Constant Folding</h4>
+                                </div>
+                                <p class="description">Evaluates constant expressions at compile time</p>
+                                <div id="constantFoldingOutput" class="output-box"></div>
+                            </div>
+                            <div class="optimization-card">
+                                <div class="card-header">
+                                    <span class="card-number">2</span>
+                                    <h4>Constant Propagation</h4>
+                                </div>
+                                <p class="description">Replaces variables with their constant values</p>
+                                <div id="constantPropagationOutput" class="output-box"></div>
+                            </div>
+                            <div class="optimization-card">
+                                <div class="card-header">
+                                    <span class="card-number">3</span>
+                                    <h4>Dead Code Elimination</h4>
+                                </div>
+                                <p class="description">Removes unused intermediate computations</p>
+                                <div id="deadCodeOutput" class="output-box"></div>
+                            </div>
+                            <div class="optimization-card">
+                                <div class="card-header">
+                                    <span class="card-number">4</span>
+                                    <h4>Common Subexpression</h4>
+                                </div>
+                                <p class="description">Reuses results of duplicate expressions</p>
+                                <div id="commonSubexprOutput" class="output-box"></div>
+                            </div>
+                        </div>
+                        <div class="performance-summary">
+                            <h4>📊 Performance Summary</h4>
+                            <div id="performanceSummary"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>Built with ❤️ for Compiler Design | Demonstrates lexical analysis, parsing, and optimization techniques</p>
+        </footer>
+    </div>
+
+    <script src="compiler.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
