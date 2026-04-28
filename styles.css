@@ -491,3 +491,138 @@ footer {
     background: var(--primary);
     border-radius: 2px;
 }
+
+/* ── Parse Tree (Syntax Analysis) ─────────────────────────────────────── */
+
+.parse-tree-container {
+    overflow-x: auto;
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 260px;
+    border: 1px solid #334155;
+}
+
+.parse-tree-svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.tree-edge {
+    stroke: #475569;
+    stroke-width: 2;
+    stroke-dasharray: 4 2;
+}
+
+/* Node base */
+.tree-node rect {
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    transition: filter 0.2s;
+}
+.tree-node:hover rect {
+    filter: drop-shadow(0 4px 10px rgba(255,255,255,0.2));
+}
+
+/* Node type colours */
+.tree-node-program rect  { fill: #1e40af; stroke: #3b82f6; }
+.tree-node-decl rect     { fill: #065f46; stroke: #10b981; }
+.tree-node-op rect       { fill: #7c2d12; stroke: #f97316; }
+.tree-node-id rect       { fill: #1e3a8a; stroke: #60a5fa; }
+.tree-node-num rect      { fill: #14532d; stroke: #4ade80; }
+.tree-node-unknown rect  { fill: #374151; stroke: #9ca3af; }
+
+.node-type-label {
+    fill: rgba(255,255,255,0.55);
+    font-size: 8px;
+    font-family: 'Consolas', monospace;
+    text-anchor: middle;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.node-val-label {
+    fill: #f1f5f9;
+    font-size: 13px;
+    font-family: 'Consolas', monospace;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+/* Legend */
+.parse-tree-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.legend-item {
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Consolas', monospace;
+    border: 2px solid;
+}
+
+.legend-decl { background: #065f46; color: #6ee7b7; border-color: #10b981; }
+.legend-op   { background: #7c2d12; color: #fdba74; border-color: #f97316; }
+.legend-id   { background: #1e3a8a; color: #93c5fd; border-color: #60a5fa; }
+.legend-num  { background: #14532d; color: #86efac; border-color: #4ade80; }
+.legend-kw   { background: #1e40af; color: #bfdbfe; border-color: #3b82f6; }
+
+/* ── AST visual box ────────────────────────────────────────────────────── */
+
+.ast-visual-box {
+    color: #a5f3fc;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* ── Semantic Analysis ─────────────────────────────────────────────────── */
+
+.semantic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.semantic-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.semantic-card:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 8px 16px rgba(8,145,178,0.15);
+    transform: translateY(-2px);
+}
+
+.semantic-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.semantic-card-header h4 {
+    color: var(--dark);
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.semantic-icon {
+    font-size: 1.4rem;
+}
+
+.semantic-box {
+    min-height: 130px;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: #bae6fd;
+}

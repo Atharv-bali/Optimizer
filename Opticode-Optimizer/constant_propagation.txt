@@ -1,8 +1,0 @@
-Optimized TAC
-t1 = 15
-t2 = 15
-a = 15
-t3 = 15
-c = 15
-
-Runtime : 5

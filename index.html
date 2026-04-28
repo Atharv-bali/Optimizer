@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🚀 Compiler Optimization Visualizer</h1>
+            <h1>Compiler Optimization Visualizer</h1>
             <p class="subtitle">Visualize lexical analysis, parsing, and optimization techniques</p>
         </header>
 
@@ -17,7 +17,7 @@
             <!-- Input Section -->
             <section class="input-section">
                 <div class="section-header">
-                    <h2>📝 Source Code</h2>
+                    <h2> Source Code</h2>
                     <button id="exampleBtn" class="btn btn-secondary">Load Example</button>
                 </div>
                 <textarea id="codeInput" placeholder="Enter your code here...
@@ -32,23 +32,31 @@ int c = a + b * 4 + 5;"></textarea>
             <section class="output-section">
                 <div class="tabs">
                     <button class="tab-btn active" data-tab="tokens">
-                        <span class="tab-icon">🔤</span>
+                        <span class="tab-icon"></span>
                         <span>Tokens</span>
                     </button>
+                    <button class="tab-btn" data-tab="syntax">
+                        <span class="tab-icon"></span>
+                        <span>Syntax</span>
+                    </button>
                     <button class="tab-btn" data-tab="ast">
-                        <span class="tab-icon">🌳</span>
+                        <span class="tab-icon"></span>
                         <span>AST</span>
                     </button>
+                    <button class="tab-btn" data-tab="semantic">
+                        <span class="tab-icon"></span>
+                        <span>Semantics</span>
+                    </button>
                     <button class="tab-btn" data-tab="symbol">
-                        <span class="tab-icon">📋</span>
+                        <span class="tab-icon"></span>
                         <span>Symbol Table</span>
                     </button>
                     <button class="tab-btn" data-tab="tac">
-                        <span class="tab-icon">⚙️</span>
+                        <span class="tab-icon"></span>
                         <span>TAC</span>
                     </button>
                     <button class="tab-btn" data-tab="optimizations">
-                        <span class="tab-icon">🚀</span>
+                        <span class="tab-icon"></span>
                         <span>Optimizations</span>
                     </button>
                 </div>
@@ -61,30 +69,80 @@ int c = a + b * 4 + 5;"></textarea>
                         <div id="tokensOutput" class="output-box"></div>
                     </div>
 
+                    <!-- Syntax Tab -->
+                    <div id="syntax-tab" class="tab-pane">
+                        <h3> Syntax Analysis — Parse Tree</h3>
+                        <p class="tab-description">Concrete parse tree showing every grammar rule applied during parsing, with annotated node types and values</p>
+                        <div class="parse-tree-legend">
+                            <span class="legend-item legend-decl">DECL</span>
+                            <span class="legend-item legend-op">OP</span>
+                            <span class="legend-item legend-id">ID</span>
+                            <span class="legend-item legend-num">NUM</span>
+                            <span class="legend-item legend-kw">KEYWORD</span>
+                        </div>
+                        <div id="parseTreeOutput" class="parse-tree-container"></div>
+                    </div>
+
                     <!-- AST Tab -->
                     <div id="ast-tab" class="tab-pane">
-                        <h3>🌳 Abstract Syntax Tree</h3>
+                        <h3> Abstract Syntax Tree</h3>
                         <p class="tab-description">Hierarchical representation of the program structure</p>
-                        <div id="astOutput" class="output-box"></div>
+                        <div id="astOutput" class="output-box ast-visual-box"></div>
+                    </div>
+
+                    <!-- Semantic Tab -->
+                    <div id="semantic-tab" class="tab-pane">
+                        <h3> Semantic Analysis</h3>
+                        <p class="tab-description">Type checking, scope resolution, and semantic validation of the program</p>
+                        <div class="semantic-grid">
+                            <div class="semantic-card">
+                                <div class="semantic-card-header">
+                                    <span class="semantic-icon">✅</span>
+                                    <h4>Type Checking</h4>
+                                </div>
+                                <div id="typeCheckOutput" class="output-box semantic-box"></div>
+                            </div>
+                            <div class="semantic-card">
+                                <div class="semantic-card-header">
+                                    <span class="semantic-icon">🔗</span>
+                                    <h4>Scope Analysis</h4>
+                                </div>
+                                <div id="scopeOutput" class="output-box semantic-box"></div>
+                            </div>
+                            <div class="semantic-card">
+                                <div class="semantic-card-header">
+                                    <span class="semantic-icon">⚠️</span>
+                                    <h4>Semantic Errors / Warnings</h4>
+                                </div>
+                                <div id="semanticErrorsOutput" class="output-box semantic-box"></div>
+                            </div>
+                            <div class="semantic-card">
+                                <div class="semantic-card-header">
+                                    <span class="semantic-icon">📊</span>
+                                    <h4>Annotated Symbol Info</h4>
+                                </div>
+                                <div id="annotatedSymbolOutput" class="output-box semantic-box"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Symbol Table Tab -->
                     <div id="symbol-tab" class="tab-pane">
-                        <h3>📋 Symbol Table</h3>
+                        <h3> Symbol Table</h3>
                         <p class="tab-description">Tracking all declared variables and their properties</p>
                         <div id="symbolOutput" class="output-box"></div>
                     </div>
 
                     <!-- TAC Tab -->
                     <div id="tac-tab" class="tab-pane">
-                        <h3>⚙️ Three Address Code (TAC)</h3>
+                        <h3> Three Address Code (TAC)</h3>
                         <p class="tab-description">Intermediate representation with at most three operands per instruction</p>
                         <div id="tacOutput" class="output-box"></div>
                     </div>
 
                     <!-- Optimizations Tab -->
                     <div id="optimizations-tab" class="tab-pane">
-                        <h3>🚀 Optimization Techniques</h3>
+                        <h3> Optimization Techniques</h3>
                         <p class="tab-description">Applying various optimization passes to improve code efficiency</p>
                         <div class="optimization-grid">
                             <div class="optimization-card">
@@ -121,7 +179,7 @@ int c = a + b * 4 + 5;"></textarea>
                             </div>
                         </div>
                         <div class="performance-summary">
-                            <h4>📊 Performance Summary</h4>
+                            <h4> Performance Summary</h4>
                             <div id="performanceSummary"></div>
                         </div>
                     </div>
